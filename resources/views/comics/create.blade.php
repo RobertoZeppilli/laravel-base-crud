@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    <title>DC | Create</title>
+    <title>DC | Aggiungi</title>
 @endsection
 
 @section('content')

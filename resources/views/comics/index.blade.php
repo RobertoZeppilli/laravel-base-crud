@@ -5,11 +5,13 @@
 @endsection
 
 @section('content')
+
     @if (session('message'))
         <div class="alert alert-success">
             {{ session('message') }}
         </div>    
     @endif
+
     <a class="btn btn-primary my-2" href="{{ route('comics.create') }}">Aggiungi Fumetto</a>
     <table class="mt-5 table table-dark table-responsive table-striped">
         <thead>
@@ -38,7 +40,6 @@
                             @method('DELETE')
                             <input class="btn btn-danger" type="submit" value="Elimina">
                         </form>
-                        {{-- <a class="btn btn-danger" href="{{ route('comics.destroy', $comic->id) }}">Delete</a> --}}
                     </td>
                 </tr>
             @endforeach

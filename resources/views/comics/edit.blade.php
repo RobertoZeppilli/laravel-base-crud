@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    <title>DC | Modifica {{ $comic->title }}</title>
+@endsection
+
 @section('content')
     <h2 class="my-3">Modifica {{ $comic->title }}</h2>
     <form action="{{ route('comics.update', $comic->id) }}" method="POST" class="mt-3">
