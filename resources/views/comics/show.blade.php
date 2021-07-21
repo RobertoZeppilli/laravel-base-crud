@@ -4,22 +4,28 @@
     <title>DC | {{ $comic->title }}</title>
 @endsection
 
+@if (session('message'))
+    <div class="alert alert-success">
+        {{ session('message') }}
+    </div>
+@endif
+
 @section('content')
-    <div class="row my-4 bg-secondary bg-gradient text-light py-3 rounded">
+    <div class="row my-4 bg-light bg-gradient text-dark py-3 rounded">
         <h2 class="mb-5 h1 text-warning">{{ $comic->title }}</h2>
-        <div class="col-2">
+        <div class="col-12 col-md-3 col-lg-2">
             <img class="img-fluid" src="{{ $comic->thumb }}" alt="{{ $comic->title }}">
         </div>
-        <div class="col-7">
+        <div class="col-12 col-md-5 col-lg-7">
             <h5 class="text-warning">Trama</h5>
             <p>{{ $comic->description }}</p>
         </div>
-        <div class="col-3">
+        <div class="col-12 col-md-4 col-lg-3">
             <h5><span class="text-warning text-bold">Prezzo:</span> {{ $comic->price }}&euro;</h5>
             <h5><span class="text-warning">Data d'uscita:</span> {{ $comic->sale_date }}</h5>
             <h5><span class="text-warning">Serie:</span> {{ $comic->series }}</h5>
             <h5><span class="text-warning">Tipo:</span> {{ $comic->type }}</h5> 
-            <a class="btn btn-primary" href="{{ route('comics.index') }}">Torna al'elenco</a>
+            <a class="btn btn-warning text-light" href="{{ route('comics.index') }}">Torna all'indice</a>
         </div>
     </div>
 @endsection

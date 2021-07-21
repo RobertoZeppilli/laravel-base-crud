@@ -5,7 +5,8 @@
 @endsection
 
 @section('content')
-    <table class="mt-5 table table-striped">
+    <a class="btn btn-primary my-2" href="{{ route('comics.create') }}">Aggiungi Fumetto</a>
+    <table class="mt-5 table table-dark table-responsive table-striped">
         <thead>
             <tr>
                 <th>ID</th>
@@ -23,8 +24,12 @@
                     <td>
                         <a class="btn btn-success" href="{{ route('comics.show', $comic->id) }}">Show</a>
                     </td>
-                    <td>Edit</td>
-                    <td>Delete</td>
+                    <td>
+                        <a class="btn btn-warning text-light" href="#">Edit</a>
+                    </td>
+                    <td>
+                        <a class="btn btn-danger" href="#">Delete</a>
+                    </td>
                 </tr>
             @endforeach
         </tbody>

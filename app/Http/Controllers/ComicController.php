@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Comic;
+use Illuminate\Support\Str;
 
 class ComicController extends Controller
 {
@@ -26,7 +27,7 @@ class ComicController extends Controller
      */
     public function create()
     {
-        //
+        return view('comics.create');
     }
 
     /**
@@ -35,9 +36,20 @@ class ComicController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Comic $comic)
     {
-        //
+        $data = $request->all();
+
+        $comic = new Comic();
+
+        $slug = $comic["title"] . " " . $comic["type"];
+        $data["slug"] = Str::slug($slug, '-');
+
+        $comic->fill($data);
+        $comic->save();
+        return redirect()
+        ->route('comics.show', $comic->id)
+        ->with('message', 'Fumetto creato correttamente!');
     }
 
     /**
@@ -80,8 +92,7 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Comic $comic)
     {
-        //
     }
 }
