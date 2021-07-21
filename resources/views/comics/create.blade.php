@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+    <h2 class="my-3">Aggiungi un nuovo fumetto</h2>
     <form action="{{ route('comics.store') }}" method="POST" class="mt-3">
         @csrf
         @method('POST')
@@ -37,6 +38,6 @@
             <textarea class="form-control" id="description" name="description" placeholder="Inserisci la descrizione della birra" rows="4"></textarea>
         </div>
         <button type="submit" class="btn btn-primary my-5">Salva</button>
-        <a class="btn btn-warning text-light" href="{{ route('comics.index') }}">Torna all'indice</a>
+        <a class="btn btn-secondary text-light" href="{{ route('comics.index') }}">Torna all'indice</a>
     </form>
 @endsection

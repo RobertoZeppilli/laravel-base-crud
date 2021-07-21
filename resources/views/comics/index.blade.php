@@ -5,6 +5,11 @@
 @endsection
 
 @section('content')
+    @if (session('message'))
+        <div class="alert alert-success">
+            {{ session('message') }}
+        </div>    
+    @endif
     <a class="btn btn-primary my-2" href="{{ route('comics.create') }}">Aggiungi Fumetto</a>
     <table class="mt-5 table table-dark table-responsive table-striped">
         <thead>
@@ -22,13 +27,18 @@
                     <td>{{ $comic->title }}</td>
                     <td>{{ $comic->type }}</td>
                     <td>
-                        <a class="btn btn-success" href="{{ route('comics.show', $comic->id) }}">Show</a>
+                        <a class="btn btn-success" href="{{ route('comics.show', $comic->id) }}">Mostra</a>
                     </td>
                     <td>
-                        <a class="btn btn-warning text-light" href="#">Edit</a>
+                        <a class="btn btn-warning text-light" href="{{ route('comics.edit', $comic->id) }}">Modifica</a>
                     </td>
                     <td>
-                        <a class="btn btn-danger" href="#">Delete</a>
+                        <form action="{{ route('comics.destroy', $comic->id) }}" method="POST" onSubmit="return confirm('Sei sicuro di voler eliminare {{ $comic->title }}?')">
+                            @csrf
+                            @method('DELETE')
+                            <input class="btn btn-danger" type="submit" value="Elimina">
+                        </form>
+                        {{-- <a class="btn btn-danger" href="{{ route('comics.destroy', $comic->id) }}">Delete</a> --}}
                     </td>
                 </tr>
             @endforeach

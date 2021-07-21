@@ -4,13 +4,14 @@
     <title>DC | {{ $comic->title }}</title>
 @endsection
 
-@if (session('message'))
-    <div class="alert alert-success">
-        {{ session('message') }}
-    </div>
-@endif
-
 @section('content')
+
+    @if (session('message'))
+        <div class="alert alert-success">
+            {{ session('message') }}
+        </div>
+    @endif
+    
     <div class="row my-4 bg-light bg-gradient text-dark py-3 rounded">
         <h2 class="mb-5 h1 text-warning">{{ $comic->title }}</h2>
         <div class="col-12 col-md-3 col-lg-2">
@@ -25,7 +26,8 @@
             <h5><span class="text-warning">Data d'uscita:</span> {{ $comic->sale_date }}</h5>
             <h5><span class="text-warning">Serie:</span> {{ $comic->series }}</h5>
             <h5><span class="text-warning">Tipo:</span> {{ $comic->type }}</h5> 
-            <a class="btn btn-warning text-light" href="{{ route('comics.index') }}">Torna all'indice</a>
+            <a class="btn btn-secondary text-light mt-2" href="{{ route('comics.index') }}">Torna all'indice</a>
+            <a class="btn btn-warning text-light mt-2" href="{{ route('comics.edit', $comic->id) }}">Modifica</a>
         </div>
     </div>
 @endsection
